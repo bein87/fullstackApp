@@ -31,11 +31,11 @@ Built with the help of:
 ## Installation
 
 - `git clone repository app from github`
-  > > open server folder and run commands in
+- open server folder and run commands in
 - `docker-compose up`
 - `npm install`
 - `npm start`
-  > > open client folder and run commands
+- open client folder and run commands
 - `npm install`
 - `npm start`
 
