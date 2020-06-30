@@ -1,7 +1,6 @@
-# simple app with user authentication, showing table of performers taken from PostgreSQL DB, using Apollo, Sequelize and graphql
+# Simple full stack app with user authentication, showing table of performers (performing CRUD request to PostgreSQL using Apollo, Sequelize and GraphQL
 
 Built with the help of:
-
 - [Node.js with Express + PostgreSQL](https://github.com/the-road-to-graphql/fullstack-apollo-express-postgresql-boilerplate)
 - [React Client](https://github.com/the-road-to-graphql/fullstack-apollo-react-boilerplate)
 
