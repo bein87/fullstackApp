@@ -54,15 +54,15 @@ const NotesPage = () => {
                 > Some of the consts could have be saved in global
                 state, using state management such as context api
                 <br />
-                > Some of the logic is repeating itself. such as error
-                message and other UI components.
+                > Some of the logic is repeating itself. such as form,
+                error message and other UI components.
                 <br />
                 some of the consts could have be saved in global
                 state, using state management such as context api
                 <br />
                 > Managing component folder structure more
                 <br />> Site is not fully responsive and in small
-                devices like old iphones, the view is not perfect.(i.e
+                devices like old iPhones, the view is not perfect.(i.e
                 table gets out of screen) clearly.
                 <br />> Minor UX issues. (i.e action buttons should be
                 displayed only on row hover)
@@ -100,8 +100,8 @@ const NotesPage = () => {
                 Known bugs
               </ListGroup.Item>
               <ListGroup.Item variant="light">
-                > Creating and editing performers does not make a
-                successful query
+                > After creating performer, table does not rerender
+                with new row
               </ListGroup.Item>
             </ListGroup>
             <img

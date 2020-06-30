@@ -22,7 +22,7 @@ const PerformerCreate = () => {
   //init variables and states
   const INITIAL_STATE = {
     name: '',
-    age: 0,
+    age: 18,
     category: '',
   };
   const [show, setShow] = useState(false);
@@ -33,10 +33,14 @@ const PerformerCreate = () => {
   //form behavior
   const onChange = (event) => {
     const { name, value } = event.target;
-    setValues({ ...values, [name]: value });
+
+    setValues({
+      ...values,
+      [name]: name === 'age' ? Number(value) : value,
+    });
     setIsValid(
       values.name.length > 2 &&
-        values.age > 18 &&
+        values.age > 0 &&
         values.category.length > 2,
     );
   };
@@ -45,6 +49,7 @@ const PerformerCreate = () => {
   const onSubmit = async (createPerformer) => {
     try {
       await createPerformer();
+      handleClose();
       setValues(INITIAL_STATE);
     } catch (error) {
       console.log(`something went wrong! ${error}`);

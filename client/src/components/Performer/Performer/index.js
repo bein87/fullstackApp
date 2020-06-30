@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import Loading from '../../Loading';
@@ -37,6 +37,35 @@ const PERFORMER_CREATED = gql`
 `;
 
 const Performers = ({ session }) => {
+  const [subscribe, setSubscribe] = useState();
+  const SubscribeToMorePerformers = ({ subscribeToMore }) => {
+    //subscribing for performers (used to update performers list)
+    subscribeToMore({
+      document: PERFORMER_CREATED,
+      updateQuery: (previousResult, { subscriptionData }) => {
+        if (!subscriptionData.data) {
+          return previousResult;
+        }
+
+        const { performerCreated } = subscriptionData.data;
+
+        return {
+          ...previousResult,
+          performers: {
+            ...previousResult.performers,
+            edges: [
+              performerCreated.performer,
+              ...previousResult.performers.edges,
+            ],
+          },
+        };
+      },
+    });
+  };
+  useEffect(() => {
+    //subscribe && SubscribeToMorePerformers(subscribe);
+  }, [subscribe]);
+
   return (
     <Query query={GET_PAGINATED_PERFORMERS} variables={LIMIT}>
       {({ data, loading, error, fetchMore, subscribeToMore }) => {
@@ -49,17 +78,15 @@ const Performers = ({ session }) => {
           data.performers &&
           data.performers.edges.length > 0
         ) {
-          return (
+           return (
             <Fragment>
-              <subscribeToMorePerformers
-                subscribeToMore={subscribeToMore}
-              />
-
-              <PerformersTable
-                data={data}
-                session={session}
-                fetchMore={fetchMore}
-              />
+              <>
+                <PerformersTable
+                  data={data}
+                  session={session}
+                  fetchMore={fetchMore}
+                />
+              </>
             </Fragment>
           );
         } else {
@@ -68,31 +95,6 @@ const Performers = ({ session }) => {
       }}
     </Query>
   );
-};
-
-//subscribing for performers (used to update performers list)
-const subscribeToMorePerformers = ({ subscribeToMore }) => {
-  subscribeToMore({
-    document: PERFORMER_CREATED,
-    updateQuery: (previousResult, { subscriptionData }) => {
-      if (!subscriptionData.data) {
-        return previousResult;
-      }
-
-      const { performerCreated } = subscriptionData.data;
-
-      return {
-        ...previousResult,
-        performers: {
-          ...previousResult.performers,
-          edges: [
-            performerCreated.performer,
-            ...previousResult.performers.edges,
-          ],
-        },
-      };
-    },
-  });
 };
 
 export default Performers;
