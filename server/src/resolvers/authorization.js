@@ -19,7 +19,7 @@ export const isAuthenticatedPerformer = async (
   { id },
   { models, me }
 ) => {
-  const performer = await models.Performer.findById(id, {
+  const performer = await models.Performer.findByPk(id, {
     raw: true,
   });
 

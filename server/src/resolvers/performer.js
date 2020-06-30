@@ -49,17 +49,18 @@ export default {
       };
     },
     performer: async (parent, { id }, { models }) => {
-      return await models.Performer.findById(id);
+      return await models.Performer.findByPk(id);
     },
   },
 
   Mutation: {
     createPerformer: combineResolvers(
       isAuthenticated,
-      async (parent, { text }, { models, me }) => {
+      async (parent, { name, age, category }, { models, me }) => {
         const performer = await models.Performer.create({
-          text,
-          userId: me.id,
+          name,
+          age,
+          category,
         });
 
         pubsub.publish(EVENTS.PERFORMER.CREATED, {
@@ -70,9 +71,14 @@ export default {
       }
     ),
     updatePerformer: combineResolvers(
-      async (parent, { text }, { models, me }) => {
-        const performer = await models.Performer.findById(me.id);
-        return await user.update({ performer });
+      async (parent, { id, name, age, category }, { models }) => {
+        const performer = await models.Performer.findByPk(id);
+        return await performer.update({
+          id: id,
+          name: name,
+          age: age,
+          category: category,
+        });
       }
     ),
 

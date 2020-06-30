@@ -7,9 +7,14 @@ export default gql`
   }
 
   extend type Mutation {
-    createPerformer(text: String!): Performer!
+    createPerformer(
+      name: String!
+      age: Int!
+      category: String!
+    ): Performer!
     deletePerformer(id: ID!): Boolean!
     updatePerformer(
+      id: ID!
       name: String!
       age: Int!
       category: String!
