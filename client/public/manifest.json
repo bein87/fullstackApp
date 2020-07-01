@@ -1,6 +1,6 @@
 {
-  "short_name": "Tzach's Task",
-  "name": "An app to show dev capabilities by Tzach Bein",
+  "short_name": "Tzach's" fullstackApp,
+  "name": "FullstackApp - An app to show dev capabilities by Tzach Bein",
   "icons": [
     {
       "src": "favicon.ico",
