@@ -4,7 +4,7 @@
 
 - React (create-react-app) with Apollo Client
 - Queries, Mutations, Subscriptions
-- bootstrap
+- Bootstrap
 
 ## Features of server
 
@@ -20,7 +20,7 @@
   - protected resolvers (e.g. e.g. session-based, role-based)
   - protected routes (e.g. session-based, role-based)
 - performance optimizations
-  - example of using Facebook's dataloader
+  - example of using Facebook's daQtaloader
 - E2E testing
 
 ## Installation
@@ -39,7 +39,7 @@
 - app > `http://localhost:3000`
 - graphql > `http://localhost:8080`
 
-### Built with the help of:
+#### Built with the help of:
 - [Node.js with Express + PostgreSQL](https://github.com/the-road-to-graphql/fullstack-apollo-express-postgresql-boilerplate)
 - [React Client](https://github.com/the-road-to-graphql/fullstack-apollo-react-boilerplate)
 
