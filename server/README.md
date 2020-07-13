@@ -20,7 +20,7 @@
   - protected resolvers (e.g. e.g. session-based, role-based)
   - protected routes (e.g. session-based, role-based)
 - performance optimizations
-  - example of using Facebook's daQtaloader
+  - example of using Facebook's dataloader
 - E2E testing
 
 ## Installation
